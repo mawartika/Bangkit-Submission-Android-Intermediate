@@ -14,8 +14,8 @@ import com.example.storyandroidintermediate.R
 
 class WidgetStoryAndromeda : AppWidgetProvider() {
     companion object {
-        private const val TOAST_ACTION = "com.rowiosama.rowzstoryapp.TOAST_ACTION"
-        const val EXTRA_ITEM = "com.rowiosama.rowzstoryapp.EXTRA_ITEM"
+        private const val TOAST_ACTION = "com.example.storyandroidintermediate.TOAST_ACTION"
+        const val EXTRA_ITEM = "com.example.storyandroidintermediate.EXTRA_ITEM"
     }
 
     private fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {

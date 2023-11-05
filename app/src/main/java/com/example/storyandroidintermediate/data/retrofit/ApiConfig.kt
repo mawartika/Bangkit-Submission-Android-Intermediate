@@ -6,7 +6,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ApiConfig {
+object ApiConfig {
     var token = ""
     fun getApiService(token: String): ApiService {
         val loggingInterceptor =

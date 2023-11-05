@@ -11,9 +11,9 @@ import com.example.storyandroidintermediate.R
 import com.example.storyandroidintermediate.data.retrofit.DetailStoryResponse
 import com.example.storyandroidintermediate.data.view.ViewModelFactoryStory
 import com.example.storyandroidintermediate.databinding.ActivityStoryBinding
+import com.example.storyandroidintermediate.data.retrofit.Result
 import com.example.storyandroidintermediate.utils.convertDate2
 
-//untuk glide di line 63 juga itu aku import manual tapi tetep ga bisa//
 
 class StoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStoryBinding

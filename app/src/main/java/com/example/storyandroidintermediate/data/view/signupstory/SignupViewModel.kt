@@ -5,5 +5,5 @@ import com.example.storyandroidintermediate.data.story.StoryRepository
 
 class SignupViewModel (private val repository: StoryRepository): ViewModel() {
 
-    fun register(name: String, email: String, password: String) = repository.register(name, email, password)
+    fun register(name: String, email: String, password: String) = repository.signup(name, email, password)
 }

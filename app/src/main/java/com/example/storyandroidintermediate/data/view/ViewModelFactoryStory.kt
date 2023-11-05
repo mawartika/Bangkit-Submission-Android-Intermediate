@@ -12,19 +12,20 @@ import com.example.storyandroidintermediate.data.story.StoryViewModel
 import com.example.storyandroidintermediate.data.view.signupstory.SignupViewModel
 
 
-//kayaknya ada yang salah import deh//
+
 class ViewModelFactoryStory (private val repository: StoryRepository) : ViewModelProvider.NewInstanceFactory (){
+
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(SignupViewModel::class.java) -> {
                 SignupViewModel(repository) as T
             }
-            modelClass.isAssignableFrom(MainViewModelStory::class.java) -> {
-                MainViewModelStory(repository) as T
-            }
             modelClass.isAssignableFrom(LoginViewModelStory::class.java) -> {
                 LoginViewModelStory(repository) as T
+            }
+            modelClass.isAssignableFrom(MainViewModelStory::class.java) -> {
+                MainViewModelStory(repository) as T
             }
             modelClass.isAssignableFrom(StoryViewModel::class.java) -> {
                 StoryViewModel(repository) as T

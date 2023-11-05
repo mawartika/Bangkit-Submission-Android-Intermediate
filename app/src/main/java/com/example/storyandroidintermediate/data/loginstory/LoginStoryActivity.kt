@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.storyandroidintermediate.R
 import com.example.storyandroidintermediate.data.main.MainActivity
+import com.example.storyandroidintermediate.data.retrofit.Result
 import com.example.storyandroidintermediate.data.pref.StoryModel
 import com.example.storyandroidintermediate.data.view.ViewModelFactoryStory
 import com.example.storyandroidintermediate.data.view.signupstory.SignupStoryActivity
@@ -56,17 +57,17 @@ class LoginStoryActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.seePasswordLogin.setOnCheckedChangeListener { _, isChecked ->
-            binding.passwordEditText.transformationMethod = if (isChecked) {
+            binding.passwordEditTextLogin.transformationMethod = if (isChecked) {
                 HideReturnsTransformationMethod.getInstance()
             } else {
                 PasswordTransformationMethod.getInstance()
             }
-            binding.passwordEditText.text?.let { binding.passwordEditText.setSelection(it.length) }
+            binding.passwordEditTextLogin.text?.let { binding.passwordEditTextLogin.setSelection(it.length) }
         }
 
         binding.loginButton.setOnClickListener {
             val email = binding.emailEditTextLogin.text.toString()
-            val pass = binding.passwordEditText.text.toString()
+            val pass = binding.passwordEditTextLogin.text.toString()
 
             val title = getString(R.string.head_notif)
             val message = getString(R.string.login_succes_notif)
@@ -80,7 +81,7 @@ class LoginStoryActivity : AppCompatActivity() {
                     is Result.Success -> {
                         showLoading(false)
                         val user = StoryModel(
-                            token = hoho.data.loginResult.token,
+                            token = hoho.data.loginResult?.token ?: "Success",
                             email = email,
                         )
                         viewModel.saveSession(user)

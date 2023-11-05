@@ -3,6 +3,7 @@ package com.example.storyandroidintermediate.data.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.storyandroidintermediate.R
+import com.example.storyandroidintermediate.data.retrofit.Result
 import com.example.storyandroidintermediate.data.Camera.CameraHomeActivity
 import com.example.storyandroidintermediate.data.adapter.ListStoryAdapter
 import com.example.storyandroidintermediate.data.loginstory.LoginStoryActivity

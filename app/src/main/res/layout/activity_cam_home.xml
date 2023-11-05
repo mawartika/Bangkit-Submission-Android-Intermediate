@@ -76,7 +76,7 @@
             android:scrollbars="vertical" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.example.storyandroidintermediate.data.edittext.ButtonEdText
+    <com.example.storyandroidintermediate.data.edittext.ButtonEditText
         android:id="@+id/submitbutton_camera_home"
         android:layout_width="275dp"
         android:layout_height="wrap_content"

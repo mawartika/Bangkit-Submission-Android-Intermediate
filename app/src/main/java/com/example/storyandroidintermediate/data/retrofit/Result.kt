@@ -7,3 +7,4 @@ sealed class Result<out R> private constructor() {
 
     object Loading : Result<Nothing>()
 }
+

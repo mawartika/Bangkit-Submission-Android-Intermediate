@@ -1,5 +1,7 @@
 package com.example.storyandroidintermediate.data.story
 
+
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.example.storyandroidintermediate.data.pref.StoryModel
@@ -10,29 +12,25 @@ import com.example.storyandroidintermediate.data.retrofit.DetailStoryResponse
 import com.example.storyandroidintermediate.data.retrofit.ListStoryItem
 import com.example.storyandroidintermediate.data.retrofit.LoginResponse
 import com.example.storyandroidintermediate.data.retrofit.SignUpResponse
+import com.example.storyandroidintermediate.data.retrofit.Result
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.HttpException
 
-//stress benerin repo hufff...//
+class StoryRepository private constructor(private val storyPreference: StoryPreference, private val apiService: ApiService) {
 
-class StoryRepository private constructor(
-    private val storyPreference: StoryPreference
-){
-
-// gatau kenapa kok api servicenya ga bisa baca signup, login, getdetail, getpost, dan getstory//
-
-    fun signup (name: String, email: String, password: String): LiveData<Result<SignUpResponse>> = liveData {
+    fun signup(name: String, email: String, password: String): LiveData<Result<SignUpResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = ApiService.signup(name, email, password)
+            val response = apiService.signup(name, email, password)
             if(response.error ==false){
                 emit(Result.Success(response))
             }else{
-                emit(Result.Error(response.message))
+                emit(Result.Error(response.message ?: "Eror"))
             }
         } catch (e: HttpException) {
             val jsonInString = e.response()?.errorBody()?.string()
@@ -44,22 +42,21 @@ class StoryRepository private constructor(
         }
     }
 
-
     fun login(email: String, password: String): LiveData<Result<LoginResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = ApiService.login(email, password)
+            val response = apiService.login(email, password)
             if(response.error ==false){
                 val user = StoryModel(
                     email = email,
-                    token = response.loginResult.token,
+                    token = response.loginResult?.token ?: "Loading",
                     isLogin = true
                 )
-                ApiConfig.token = response.message
+                ApiConfig.token = response.message ?: "Success"
                 storyPreference.saveSession(user)
                 emit(Result.Success(response))
             }else{
-                emit(Result.Error(response.message))
+                emit(Result.Error(response.message ?: "Eror"))
             }
         } catch (e: HttpException) {
             val jsonInString = e.response()?.errorBody()?.string()
@@ -150,7 +147,7 @@ class StoryRepository private constructor(
             apiService: ApiService
         ): StoryRepository =
             instance ?: synchronized(this) {
-                instance ?: StoryRepository(storyPreference,ApiService)
+                instance ?: StoryRepository(storyPreference, apiService)
             }.also { instance = it }
     }
 }

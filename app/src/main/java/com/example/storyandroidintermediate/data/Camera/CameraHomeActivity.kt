@@ -16,6 +16,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.storyandroidintermediate.R
+import com.example.storyandroidintermediate.data.retrofit.Result
 import com.example.storyandroidintermediate.data.edittext.ButtonEditText
 import com.example.storyandroidintermediate.data.main.MainActivity
 import com.example.storyandroidintermediate.data.view.ViewModelFactoryStory
@@ -44,8 +45,8 @@ class CameraHomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-// ini juga kalo submitbuttonnya ku benahi ntar eror
-        myButton = binding.submitbutton
+
+        myButton = binding.submitbuttonCameraHome
 
         val result = binding.descriptionEditTextCameraHome.text
         myButton.isEnabled = result != null && result.toString().isNotEmpty()
@@ -65,10 +66,10 @@ class CameraHomeActivity : AppCompatActivity() {
 
         binding.descriptionEditTextCameraHome.movementMethod = ScrollingMovementMethod();
 
-// ini submit button kalo ku berahi nanti setonclicknya eror//
+
         binding.gallerybutton.setOnClickListener { startGallery() }
         binding.cameraButton.setOnClickListener { startCamera() }
-        binding.submitbutton.setOnClickListener { uploadImage() }
+        binding.submitbuttonCameraHome.setOnClickListener { uploadImage() }
     }
 
     private fun startGallery() {

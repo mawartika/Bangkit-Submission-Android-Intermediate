@@ -18,7 +18,7 @@
         android:theme="@style/Theme.StoryAndroidIntermediate"
         tools:targetApi="31">
         <receiver
-            android:name=""
+            android:name=".data.widget.WidgetStoryAndromeda"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -44,8 +44,8 @@
             android:name=".data.loginstory.LoginStoryActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.SplashScreen.SplashScreenActivity"
-            android:exported="true">
+            android:name=".data.SplashScreen.SplashScreenActivity"
+            android:exported="true"/>
         <activity
             android:name=".data.main.MainActivity"
             android:exported="true">

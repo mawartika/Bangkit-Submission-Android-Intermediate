@@ -16,8 +16,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.storyandroidintermediate.R
 import com.example.storyandroidintermediate.data.view.ViewModelFactoryStory
 import com.example.storyandroidintermediate.databinding.ActivitySignupstoryBinding
+import com.example.storyandroidintermediate.data.retrofit.Result
 
-//kayaknya ada yang salah import deh//
+
 class SignupStoryActivity : AppCompatActivity(){
     private lateinit var binding: ActivitySignupstoryBinding
 
@@ -103,11 +104,11 @@ class SignupStoryActivity : AppCompatActivity(){
 
         val titleregister = ObjectAnimator.ofFloat(binding.titleTextViewSignup, View.ALPHA, 1f).setDuration(200)
         val titlename = ObjectAnimator.ofFloat(binding.nameTextViewSignup, View.ALPHA, 1f).setDuration(200)
-        val nameedit = ObjectAnimator.ofFloat(binding.nameEditTextSignup, View.ALPHA, 1f).setDuration(200)
+        val nameedit = ObjectAnimator.ofFloat(binding.nameEditTextLayoutSignup, View.ALPHA, 1f).setDuration(200)
         val titlemail = ObjectAnimator.ofFloat(binding.emailTextViewLogin, View.ALPHA, 1f).setDuration(200)
-        val emailedit = ObjectAnimator.ofFloat(binding.emailEditTextStory, View.ALPHA, 1f).setDuration(200)
+        val emailedit = ObjectAnimator.ofFloat(binding.emailEditTextLayoutLogin, View.ALPHA, 1f).setDuration(200)
         val titlepass = ObjectAnimator.ofFloat(binding.passwordTextViewLogin, View.ALPHA, 1f).setDuration(200)
-        val passedit = ObjectAnimator.ofFloat(binding.passwordEditTextLogin, View.ALPHA, 1f).setDuration(200)
+        val passedit = ObjectAnimator.ofFloat(binding.passwordEditTextLayout, View.ALPHA, 1f).setDuration(200)
         val login = ObjectAnimator.ofFloat(binding.ButtonSignup, View.ALPHA, 1f).setDuration(200)
 
         AnimatorSet().apply {

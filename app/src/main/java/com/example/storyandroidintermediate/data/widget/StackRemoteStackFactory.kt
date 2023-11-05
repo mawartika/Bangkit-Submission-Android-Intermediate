@@ -14,14 +14,14 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.storyandroidintermediate.R
+import com.example.storyandroidintermediate.data.retrofit.ApiConfig
+import com.example.storyandroidintermediate.data.retrofit.ListStoryItem
 import com.example.storyandroidintermediate.data.retrofit.StoryResponse
 import com.example.storyandroidintermediate.utils.Constant
-import com.rowiosama.rowzstoryapp.data.api.ApiConfig
-import com.rowiosama.rowzstoryapp.data.model.ListStoryItem
+import retrofit2.Call
 import retrofit2.Response
 
 
-//dicek ya siapa tau ada salah import//
 class StackRemoteStackFactory(private val mContext: Context) : RemoteViewsService.RemoteViewsFactory {
 
     private val mWidgetItems = ArrayList<Bitmap>()
@@ -53,7 +53,7 @@ class StackRemoteStackFactory(private val mContext: Context) : RemoteViewsServic
                             val appWidgetManager = AppWidgetManager.getInstance(mContext)
                             val thisAppWidget = ComponentName(mContext, WidgetStoryAndromeda::class.java)
                             val appWidgetIds = appWidgetManager.getAppWidgetIds(thisAppWidget)
-                            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.stack_view)
+                            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.stack_view_widget)
                         }
                         i++
                         Log.d("WidgetImages:",story.photoUrl)
